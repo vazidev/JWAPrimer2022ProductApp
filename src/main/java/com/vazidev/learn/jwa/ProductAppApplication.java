@@ -5,6 +5,8 @@ import java.util.Arrays;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.ApplicationContext;
+import org.springframework.context.annotation.Bean;
+import org.springframework.web.client.RestTemplate;
 
 /***
  * sets up a default config
@@ -27,6 +29,11 @@ public class ProductAppApplication {
 		for(String beanNames:beans) {
 			System.out.println(beanNames);
 		}
+	}
+	
+	@Bean 
+	public RestTemplate getRestTemplate() {  //Allows auto generation of the new Beans
+		return new RestTemplate();
 	}
 
 }

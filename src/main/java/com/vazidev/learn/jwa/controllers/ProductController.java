@@ -90,17 +90,27 @@ public class ProductController {
 	}
 	
 	@GetMapping
-	public ResponseEntity<List<Product>> getProducts(){
+	public ResponseEntity<List<Product>> getProducts(@RequestParam(required = false) String productName, @RequestParam(required = false) String status ){
 		ResponseEntity<List<Product>> responseEntity = null;
-		
 		List<Product> products = new ArrayList<Product>();
-		products = productService.getProducts();
-		if (products.size() == 0) {
-			//failed
-			responseEntity = new ResponseEntity<List<Product>>(products, HttpStatus.NO_CONTENT); //201
-		}else {
-			responseEntity = new ResponseEntity<List<Product>>(products, HttpStatus.OK); //201
-			}
+		
+		if (productName ==null) {  //verifyr get Prodcut does not include additional requirements
+			products = productService.getProducts();
+			if (products.size() == 0) {
+				//failed
+				responseEntity = new ResponseEntity<List<Product>>(products, HttpStatus.NO_CONTENT); //201
+			}else {
+				responseEntity = new ResponseEntity<List<Product>>(products, HttpStatus.OK); //201
+				}
+		
+		}if (status !=null){
+			products = productService.getProductsByStatus(status);  //get Products by Status
+			
+		}else { 
+			
+			products = productService.getProductsByproductName(productName);   //get Products by Name			
+		}
+		
 		return responseEntity;
 		}
 		

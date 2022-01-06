@@ -17,10 +17,12 @@ public interface ProductService {
 	
 	
 	//TODO
-	public List<Product> getProductsByName(String productName);
+	public List<Product> getProductsByproductName(String productName);
 	public List<Product> getProductsByPrice(int price);
+	public List<Product> getProductsByproductNameAndPrice(String productName, int price);
 	public List<Product> getProductsByPriceRange(int minPrice, int maxPrice);
-	public List<Product> getProductsByStatus(String status);
+	public List<Product> getProductsByproductQuantityRange(int minQty, int maxQty);
+	public List<Product> getProductsByStatus(String Status);
 	
 	
 

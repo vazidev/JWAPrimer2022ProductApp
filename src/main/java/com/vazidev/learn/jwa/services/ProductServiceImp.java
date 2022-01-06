@@ -62,10 +62,9 @@ public class ProductServiceImp implements ProductService {
 		Optional<Product> product = productDao.findById(productId);
 		return product.isPresent();
 	}
-	
-	
+
 	@Override
-	public List<Product> getProductsByName(String productName) {
+	public List<Product> getProductsByproductName(String productName) {
 		// TODO Auto-generated method stub
 		return null;
 	}
@@ -77,16 +76,31 @@ public class ProductServiceImp implements ProductService {
 	}
 
 	@Override
-	public List<Product> getProductsByPriceRange(int minimunPrice, int maximumPrice) {
+	public List<Product> getProductsByproductNameAndPrice(String productName, int price) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public List<Product> getProductsByStatus(String status) {
+	public List<Product> getProductsByPriceRange(int minPrice, int maxPrice) {
 		// TODO Auto-generated method stub
 		return null;
 	}
+
+	@Override
+	public List<Product> getProductsByproductQuantityRange(int minQty, int maxQty) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public List<Product> getProductsByStatus(String Status) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+	
+	
+	
 
 
 }

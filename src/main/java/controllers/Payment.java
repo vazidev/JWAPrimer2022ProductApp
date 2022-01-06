@@ -7,7 +7,6 @@ public class Payment {
 	
 	public String pay (int amount, String payTo) {
 	return "Successfully credited USD :"  + amount + " to " + payTo;
-	
 	}
 
 }
