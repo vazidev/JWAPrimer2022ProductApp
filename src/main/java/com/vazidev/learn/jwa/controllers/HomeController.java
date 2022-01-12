@@ -1,11 +1,11 @@
-package controllers;
+package com.vazidev.learn.jwa.controllers;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 
 @RestController
-@RequestMapping("/app")
+@RequestMapping()
 public class HomeController {
 	
 	@Autowired

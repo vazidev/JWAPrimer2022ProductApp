@@ -1,4 +1,4 @@
-package controllers;
+package com.vazidev.learn.jwa.controllers;
 
 import org.springframework.stereotype.Service;
 

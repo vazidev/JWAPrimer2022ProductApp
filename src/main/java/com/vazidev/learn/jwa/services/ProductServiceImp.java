@@ -47,7 +47,7 @@ public class ProductServiceImp implements ProductService {
 	
 	
 	@Override
-	public Product getProductById(int productId) {
+	public Product getProduct(int productId) {
 		Optional<Product> product = productDao.findById(productId);
 		return product.get();
 	}
@@ -70,19 +70,19 @@ public class ProductServiceImp implements ProductService {
 	}
 
 	@Override
-	public List<Product> getProductsByPrice(int price) {
+	public List<Product> getProductsByPrice(double price) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public List<Product> getProductsByproductNameAndPrice(String productName, int price) {
+	public List<Product> getProductsByproductNameAndPrice(String productName, double price) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public List<Product> getProductsByPriceRange(int minPrice, int maxPrice) {
+	public List<Product> getProductsByPriceRange(double minPrice, double maxPrice) {
 		// TODO Auto-generated method stub
 		return null;
 	}
@@ -99,8 +99,5 @@ public class ProductServiceImp implements ProductService {
 		return null;
 	}
 	
-	
-	
-
 
 }

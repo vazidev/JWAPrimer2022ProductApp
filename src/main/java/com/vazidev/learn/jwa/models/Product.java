@@ -34,13 +34,12 @@ public class Product {
 	private int quantityOnHand;
 	private int price;
 	private ProductStatus status;
-	
-	
-	
+
+    public Product(int productId, String dummy_product, int quantityOnHand, int price, String status) {
+    }
 
 
-
-	public int getProductId() {
+    public int getProductId() {
 		return productId;
 	}
 

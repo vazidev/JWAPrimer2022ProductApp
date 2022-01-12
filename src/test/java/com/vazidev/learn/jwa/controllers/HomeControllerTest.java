@@ -4,11 +4,7 @@ import static org.junit.jupiter.api.Assertions.*;
 
 import java.net.URL;
 
-import org.junit.jupiter.api.AfterAll;
-import org.junit.jupiter.api.AfterEach;
-import org.junit.jupiter.api.BeforeAll;
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.http.ResponseEntity;
@@ -17,8 +13,8 @@ import org.springframework.boot.test.context.SpringBootTest.WebEnvironment;
 
 
 @SpringBootTest(webEnvironment = WebEnvironment.RANDOM_PORT)
-
-class HomeControllerTest {
+@TestMethodOrder(value=MethodOrderer.OrderAnnotation.class)
+class HomeControllerTest{
 	
 	
 		private String port;
@@ -27,23 +23,30 @@ class HomeControllerTest {
 		//private RestTemplate restTemplate;
 		
 		@Autowired
-		RestTemplate restTemplate;
+		private RestTemplate restTemplate;
 		
 		@BeforeEach
 		void setup() throws Exception {
-			url =new URL(baseUrl + ":" + port + "/home");
+			url =new URL(baseUrl + ":" + port + "/app/home");
 		}
 		
 		
 		@Test
+		@Order(1)
+		@DisplayName("Testing home rest api")
 		void testHome() {
 			ResponseEntity<String> response = restTemplate.getForEntity(url.toString(), String.class);
-			String expected = "--Hello and Warm Welcome to the JWA PRIMER Session -- Revature";
+			String expected = "Hello and Warm Welcome to JWA Testing Primer Session"; //"--Hello and Warm Welcome to the JWA Testing PRIMER Session -- by REVATURE";
 			String actual = response.getBody();
+			System.out.println(actual);
 			assertEquals(expected, actual);
 		}
-		
-		
+
+	@Test
+	@Order(2)
+	void testPay() {
+		fail("Not yet implemented");
+	}
 
 
 
@@ -59,9 +62,6 @@ class HomeControllerTest {
 	void tearDown() throws Exception {
 	}
 
-	@Test
-	void testPay() {
-		fail("Not yet implemented");
-	}
+
 
 }

@@ -30,6 +30,7 @@ public abstract class AbstractTest {
 		return mapper.writeValueAsString(obj);
 	}
 
+
 	protected <T> T mapFromJson(String json, Class<T> clazz) throws JsonProcessingException {
 		ObjectMapper mapper = new ObjectMapper();
 		return mapper.readValue(json, clazz);

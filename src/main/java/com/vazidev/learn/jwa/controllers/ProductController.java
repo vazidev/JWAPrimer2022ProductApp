@@ -12,7 +12,7 @@ import com.vazidev.learn.jwa.models.Product;
 import com.vazidev.learn.jwa.services.ProductService;
 
 @RestController
-@RequestMapping("product")
+@RequestMapping("product") //localhost:9090/app/product
 public class ProductController {
 	
 	@Autowired
@@ -51,14 +51,14 @@ public class ProductController {
 		String result = null;
 		if (productService.isProductExists(product.getProductId())) {
 			//failed
-			responseEntity = new ResponseEntity<String>("Product does not Exist ", HttpStatus.CONFLICT); //409
+			responseEntity = new ResponseEntity<String>("Product does not exist! ", HttpStatus.CONFLICT); //409
 		}else {
 			result = productService.updateProduct(product);
 			if(result.equals("product updated successfully")) {
-				responseEntity = new ResponseEntity<String>(result, HttpStatus.CREATED); //201
+				responseEntity = new ResponseEntity<String>(result, HttpStatus.OK); //200
 				
 			}else {
-				responseEntity = new ResponseEntity<String>(result, HttpStatus.NO_CONTENT); //204
+				responseEntity = new ResponseEntity<String>(result, HttpStatus.NOT_ACCEPTABLE); //204
 			}
 		}
 		//send appropriate message response
@@ -125,7 +125,7 @@ public class ProductController {
 			//failed
 			responseEntity = new ResponseEntity<Product>(product, HttpStatus.NO_CONTENT); //201
 		}else {
-			product =  productService.getProductById(productId);
+			product =  productService.getProduct(productId);
 			responseEntity = new ResponseEntity<Product>(product, HttpStatus.OK); //201
 			}
 		return responseEntity;

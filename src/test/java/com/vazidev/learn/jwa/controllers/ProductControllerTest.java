@@ -12,7 +12,7 @@ import com.vazidev.learn.jwa.models.Product;
 @TestMethodOrder(value = MethodOrderer.OrderAnnotation.class)
 class ProductControllerTest extends AbstractTest{
 	
-	String uri = "/product";
+	String uri = "app/product";
 	int productId = 999;
 	
 
@@ -20,18 +20,15 @@ class ProductControllerTest extends AbstractTest{
 	static void setUpBeforeClass() throws Exception {
 	}
 
-	@AfterAll
-	static void tearDownAfterClass() throws Exception {
-	}
-
 	@BeforeEach
 	void setUp() throws Exception {
-		super.setUp();
+		super.setUp();  //refers back to the AbstractTest class method
 	}
 
-	@AfterEach
-	void tearDown() throws Exception {
-	}
+
+
+
+
 	
 	
 //testing Save funtionality
@@ -39,10 +36,9 @@ class ProductControllerTest extends AbstractTest{
 	@DisplayName("Testing Save Product ")
 	@Order(1)
 	void testSaveProduct() throws Exception {
-		//fail("Not yet implemented");
-		Product product = new Product();   //Product(productId, "Dummy Product", 100, 200, );
+		Product product = new Product(productId, "Dummy Product", 100, 200,"STATUS_ACTIVE" );
 		System.out.println(product);
-		//conver the product object to  JSON format
+		//converT the product object to  JSON format
 		String productJSON = super.mapToJson(product);
 		System.out.println(productJSON);
 		MvcResult mvcResult = mockMvc.perform(
@@ -55,10 +51,6 @@ class ProductControllerTest extends AbstractTest{
 				
 			assertEquals (201, status);
 			assertEquals (content, " Product Saved Succesfully");
-			
-			
-				
-				
 	}
 
 	
@@ -67,7 +59,7 @@ class ProductControllerTest extends AbstractTest{
 	@DisplayName("Testing update product")
 	@Order(2)
 	void testUpdateProduct() throws Exception {
-		Product product = new Product();
+		Product product = new Product(productId, "Dummy Product", 100, 200,"STATUS_ACTIVE" );
 		System.out.println(product);
 		//convert the product object into json format
 		String productJSON = super.mapToJson(product);
@@ -112,6 +104,7 @@ class ProductControllerTest extends AbstractTest{
 		assertTrue(products.length > 0);
 		}
 
+
 		//Testing the Get single Product functionality
 		@Test
 		@DisplayName("Testing get single product")
@@ -119,5 +112,17 @@ class ProductControllerTest extends AbstractTest{
 		void testGetProduct() {
 			fail("Not yet implemented");
 		}
+
+
+
+	@AfterEach
+	void tearDown() throws Exception {
+	}
+
+	@AfterAll
+	static void tearDownAfterClass() throws Exception {
+	}
+
+
 
 }
