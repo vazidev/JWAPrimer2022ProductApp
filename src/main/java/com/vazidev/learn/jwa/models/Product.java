@@ -2,6 +2,8 @@ package com.vazidev.learn.jwa.models;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.Enumerated;
+import javax.persistence.EnumType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -23,7 +25,7 @@ import lombok.ToString;
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
-@Table(name="products")
+@Table(name="product")
 public class Product {
 	
 	@Id
@@ -33,7 +35,8 @@ public class Product {
 	private String productName;
 	private int quantityOnHand;
 	private int price;
-	private ProductStatus status;
+    @Enumerated(EnumType.STRING)
+    private ProductStatus status;
 
     public Product(int productId, String dummy_product, int quantityOnHand, int price, String status) {
     }

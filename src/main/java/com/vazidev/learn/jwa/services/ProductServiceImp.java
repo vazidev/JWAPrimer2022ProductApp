@@ -20,7 +20,7 @@ public class ProductServiceImp implements ProductService {
 	public String saveProduct(Product product) {
 		if (product.getPrice() < 0 || product.getQuantityOnHand() < 0) {
 			//check to see that the price is legitimate and the quantity is available
-			return "Product price or qoh cannot be negative";	
+			return "Product price or QoH cannot be negative";
 		}else {
 			productDao.save(product);
 			return " Product saved successfully";	

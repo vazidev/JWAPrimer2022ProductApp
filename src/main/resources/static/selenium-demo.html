@@ -1,0 +1,28 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <title>Selenium Demo Page</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <style>
+    body { font-family: Arial, sans-serif; margin: 2rem; }
+    .btn { padding: 0.5rem 1rem; margin-right: 0.5rem; }
+    #result { margin-top: 1rem; color: #155724; }
+  </style>
+  <script>
+    function showMessage(id) {
+      document.getElementById('result').innerText = 'Clicked: ' + id;
+    }
+  </script>
+  </head>
+  <body>
+    <h1 id="title">Selenium Demo</h1>
+    <p id="description">Use IDs and classes below for predictable selectors.</p>
+    <button id="btn-login" class="btn" onclick="showMessage('btn-login')">Login</button>
+    <button id="btn-signup" class="btn" onclick="showMessage('btn-signup')">Sign Up</button>
+    <input id="input-email" type="email" placeholder="Email" />
+    <input id="input-password" type="password" placeholder="Password" />
+    <div id="result"></div>
+  </body>
+  </html>
+

@@ -1,0 +1,78 @@
+{
+  "info": {
+    "name": "ProductApp API",
+    "description": "Spring Boot API for Product application. Includes home, pay, and product CRUD endpoints.",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "Home",
+      "request": {
+        "method": "GET",
+        "url": "{{baseUrl}}/home"
+      }
+    },
+    {
+      "name": "Pay",
+      "request": {
+        "method": "GET",
+        "url": "{{baseUrl}}/pay/{{amount}}/{{customer}}"
+      }
+    },
+    {
+      "name": "Products",
+      "item": [
+        {
+          "name": "List Products",
+          "request": {
+            "method": "GET",
+            "url": "{{baseUrl}}/product"
+          }
+        },
+        {
+          "name": "Get Product by ID",
+          "request": {
+            "method": "GET",
+            "url": "{{baseUrl}}/product/{{productId}}"
+          }
+        },
+        {
+          "name": "Create Product",
+          "request": {
+            "method": "POST",
+            "header": [
+              { "key": "Content-Type", "value": "application/json" }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"productId\": 101,\n  \"productName\": \"Sample\",\n  \"quantityOnHand\": 10,\n  \"price\": 99.99,\n  \"status\": \"Active\"\n}"
+            },
+            "url": "{{baseUrl}}/product"
+          }
+        },
+        {
+          "name": "Update Product",
+          "request": {
+            "method": "PUT",
+            "header": [
+              { "key": "Content-Type", "value": "application/json" }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"productId\": {{productId}},\n  \"productName\": \"Updated Sample\",\n  \"quantityOnHand\": 25,\n  \"price\": 79.99,\n  \"status\": \"Active\"\n}"
+            },
+            "url": "{{baseUrl}}/product"
+          }
+        },
+        {
+          "name": "Delete Product",
+          "request": {
+            "method": "DELETE",
+            "url": "{{baseUrl}}/product/{{productId}}"
+          }
+        }
+      ]
+    }
+  ]
+}
+

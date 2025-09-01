@@ -25,11 +25,6 @@ class ProductControllerTest extends AbstractTest{
 		super.setUp();  //refers back to the AbstractTest class method
 	}
 
-
-
-
-
-	
 	
 //testing Save funtionality
 	@Test
